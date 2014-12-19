@@ -1,0 +1,15 @@
+@{
+	Layout = "~/_layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- This will insert the rendered markdown content -->
+@Model.Content
+
+<h3>Top 2 Posts</h3>
+@foreach(var page in Model.Lists["blog"].TakeNewest(2))
+{
+	<a href="@ResolvePage(page)">@page.Title</a>
+	<p>@page.Summary</p>
+}
